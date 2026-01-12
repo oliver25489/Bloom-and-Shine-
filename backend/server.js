@@ -4,7 +4,14 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+// Allow CORS from your Vercel frontend
+app.use(cors({
+  origin: 'https://bloom-and-shine.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Configure email
