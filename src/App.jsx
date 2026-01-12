@@ -4,7 +4,7 @@ import './App.css';
 
 
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://bloom-shine-api.onrender.com' 
+  ? 'https://bloom-and-shine.onrender.com' 
   : 'http://localhost:5000';
 
 
