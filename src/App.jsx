@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://bloom-shine-api.onrender.com' 
+  : 'http://localhost:5000';
+
+
 function PurchaseDrawer({ open, onClose }) {
   const [form, setForm] = useState({
     firstName: '',
@@ -49,7 +54,7 @@ function PurchaseDrawer({ open, onClose }) {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       try {
-        const response = await fetch('http://localhost:5000/api/orders', {
+        const response = await fetch(`${API_URL}/api/orders`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(form),
@@ -71,6 +76,7 @@ function PurchaseDrawer({ open, onClose }) {
               quantity: 1,
               price: 500,
             });
+            
             onClose();
           }, 2000);
         } else {
